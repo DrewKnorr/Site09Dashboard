@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import RoboChart from '@postlight/react-google-sheet-to-chart';
 import NavBar from '../parts/navbar';
 
 export default class RecordLogs extends Component {

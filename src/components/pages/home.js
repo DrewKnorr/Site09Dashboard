@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import RoboChart from '@postlight/react-google-sheet-to-chart';
+
 
 
 import Logo from '../../../static/assets/photos/ResearchLogo.png';
