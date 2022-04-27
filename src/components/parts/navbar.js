@@ -44,11 +44,11 @@ export default class NavBar extends Component {
               Research Administration
             </NavLink>
           </div>
-          <div className="nav-link-wrapper">
+          {/* <div className="nav-link-wrapper">
             <NavLink exact to="/RAInfo" activeClassName="nav-link-active">
               Research Administration
             </NavLink>
-          </div>
+          </div> */}
 
         </div>
       </div>
