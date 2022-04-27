@@ -1,0 +1,24 @@
+.nav-wrapper{
+    position:fixed;
+    bottom:0;
+    right:0;
+    background-color: black;
+    margin:5px;
+    overflow:hidden;
+    padding:10px;
+    .nav-items{
+        .nav-link-wrapper{
+            a{
+                font-size:1.25em;
+                font-family:'Courier New', Courier, monospace ;
+                text-decoration: none;
+                // font-weight: 900;
+                color:white;
+                &:hover{
+                    font-weight: 900;
+                    color:red;
+                }
+            }
+        }
+    }
+}
