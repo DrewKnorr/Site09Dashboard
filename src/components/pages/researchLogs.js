@@ -16,7 +16,11 @@ export default class RecordLogs extends Component {
     return (
       <div className='home-wrapper'>
           <div className='nav-wrapper'style={{zIndex:1,right:0,position:'absolute'}}>
-            <NavBar/>
+              <NavBar
+                  loggedInStatus={this.props.loggedInStatus}
+                  username={this.props.username}
+                  handleSuccessfulLogout={this.props.handleSuccessfulLogout}
+              />
           </div>
           <div id='log-content-wrapper' style={{width:"90vw", height:"90vh"}}>
             <div id='log-wrapper' style={{width:"90vw", height:"90vh"}}>

@@ -6,9 +6,13 @@ import NavBar from '../parts/navbar';
 export default class RecordLogs extends Component {
   render() {
     return (
-      <div className='home-wrapper'>
+      <div className='home-wrapper' id='clearance-levels-background'>
           <div className='nav-wrapper'style={{zIndex:1,right:0,position:'absolute'}}>
-            <NavBar/>
+              <NavBar
+                  loggedInStatus={this.props.loggedInStatus}
+                  username={this.props.username}
+                  handleSuccessfulLogout={this.props.handleSuccessfulLogout}
+              />
           </div>
           <div id='clearance-levels' >
             <iframe

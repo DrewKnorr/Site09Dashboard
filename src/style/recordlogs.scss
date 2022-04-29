@@ -1,8 +1,32 @@
-#review-log-wrapper{
-    // width:75vw; 
-    // height:90vh;
-    iframe{
-        width:25px;
-        height:25px;
+#log-wrapper{
+    width:80vw;
+    height:90vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    form{
+        padding:5px;
+        border:1px solid black;
+       #logo-wrapper{
+           border-bottom:1px solid black;
+           padding:.5em;
+       }
+       .form-item{
+           display:flex;
+           flex-direction: column;
+           #log-input{
+               height:15em;
+               font-size: 1.25em;
+           }
+           label{
+               padding:2.5px;
+               font-size:1.5em;
+               margin:.5em,0,.5em,0;
+           }
+           button{
+               margin:1em;
+           }
+       }
     }
 }

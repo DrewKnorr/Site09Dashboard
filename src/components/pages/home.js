@@ -19,7 +19,6 @@ export default class Landing extends Component {
 
     buildString(){
         let tempWelcome = this.state.welcome;
-        console.log(tempWelcome)
         if(tempWelcome.length>0){
             this.setState({
                 welcome:tempWelcome.slice(1),
@@ -45,8 +44,12 @@ export default class Landing extends Component {
                     </div>
                 </div>
             </div>
-            <div className='content-wrapper'>
-                <NavBar/>
+            <div className='nav-wrapper'style={{zIndex:1,right:0,position:'absolute'}}>
+                <NavBar
+                    loggedInStatus={this.props.loggedInStatus}
+                    username={this.props.username}
+                    handleSuccessfulLogout={this.props.handleSuccessfulLogout}
+                />
             </div>
       </div>
     );

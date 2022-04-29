@@ -19,6 +19,25 @@
                     color:red;
                 }
             }
+            .nav-link-active{
+                font-weight: 900;
+                color:red;
+                text-decoration: underline;
+            }
+            button{
+                font-size:1.25em;
+                font-family:'Courier New', Courier, monospace ;
+                text-decoration: none;
+                // font-weight: 900;
+                color:white;
+                background-color: transparent;
+                border: none;
+                &:hover{
+                    font-weight: 900;
+                    color:red;
+                }
+                
+            }
         }
     }
 }

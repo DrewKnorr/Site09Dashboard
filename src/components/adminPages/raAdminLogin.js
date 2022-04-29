@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
+import NavBar from '../parts/navbar.js';
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -60,35 +62,44 @@ export default class Login extends Component {
       
   render() {
     return (
-      <div>
-        <h4>Research Administration: </h4>
-
-        <div>{this.state.errorText}</div>
-
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Your password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-
-          <div>
-            <button type="submit">Login</button>
+      <div className='home-wrapper'>
+        <div className='nav-wrapper'style={{zIndex:1,right:0,position:'absolute'}}>
+              <NavBar
+                  loggedInStatus={this.props.loggedInStatus}
+                  username={this.props.username}
+                  handleSuccessfulLogout={this.props.handleSuccessfulLogout}
+              />
           </div>
-        </form>
-      </div>
+          <div>
+            <h4>Research Administration: </h4>
+
+            <div>{this.state.errorText}</div>
+
+            <form onSubmit={this.handleSubmit}>
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Your password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+
+              <div>
+                <button type="submit">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
     );
   }
 }

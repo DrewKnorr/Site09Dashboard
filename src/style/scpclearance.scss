@@ -1,6 +1,12 @@
-#clearance-levels{
-    width:100vw;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+#clearance-levels-background{
+    height: 100vh;
+    top:0;
+    position: absolute;
+    #clearance-levels{
+        width:100vw;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    background-color: #383838;
 }

@@ -21,22 +21,22 @@ export default class RAInfo extends Component {
   render() {
     return (
       <div className='home-wrapper'>
-        <div className='nav-wrapper'>
-            <NavBar/>
+        <div className='nav-wrapper'style={{zIndex:1,right:0,position:'absolute'}}>
+            <NavBar
+                loggedInStatus={this.props.loggedInStatus}
+                username={this.props.username}
+                handleSuccessfulLogout={this.props.handleSuccessfulLogout}
+            />
         </div>
         <div id='ra-wrapper' style={{width:"80vw", height:"90vh"}}>
             <div>
-                <h2>Pull Content from #manament-team channel</h2>
+                <h2>Pull Content from #management-team channel</h2>
                 
             </div>
             <div>
                 <h2>Schedual</h2>
             </div>
         </div>
-        <div style={{visibility:this.state.loggedIn}}>
-            <h2>Login for RA</h2>
-            <a href='/RaLogin'>Login</a> 
-        </div> 
     </div>
     );
   }

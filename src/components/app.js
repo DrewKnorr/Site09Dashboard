@@ -10,13 +10,16 @@ import ResearchLogs from './pages/researchLogs.js';
 import SCPClearanceLevels from './pages/scpClearanceLevels.js';
 import RaInfo from './pages/rainfo.js';
 import RaLogin from './adminPages/raAdminLogin.js';
+import RaUserControl from './adminPages/raUserControl.js';
+
+import NavBar from './parts/navbar.js';
 
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedInStatus: false,
+      loggedInStatus: true,
       username: ""
     };
 
@@ -49,21 +52,81 @@ export default class App extends Component {
     });
   }
 
+  authdAdminPages(){
+    return [
+      <Route
+        key="usercontrol"
+        path="/usercontrol"
+        render={props =>(
+          <RaUserControl 
+            {...props}
+            loggedInStatus={this.state.loggedInStatus}
+            username={this.state.username}
+            handleSuccessfulLogout={this.handleSuccessfulLogout}
+          />
+          )}
+      />,
+      
+    ];
+  }
+
   render() {
     return (
       <div className='app'>
+        {/* <NavBar
+            loggedInStatus={this.state.loggedInStatus}
+            username={this.state.username}
+            handleSuccessfulLogout={this.handleSuccessfulLogout}
+          /> */}
         <BrowserRouter>
           <Route exact path="/" component={Landing}/>
-          <Route exact path="/home" component={Home}/>
-          <Route path="/recordLogs" component={RecordLogs}/>
-          <Route path="/researchdocs" component={ResearchDocs}/>
-          <Route path="/researchlogs" component={ResearchLogs}/>
-          <Route path="/scpclearancelevels" component={SCPClearanceLevels}/>
+          <Route path="/home" render={props=>(
+            <Home
+              {...props}
+              loggedInStatus={this.state.loggedInStatus}
+              username={this.state.username}
+              handleSuccessfulLogout={this.handleSuccessfulLogout}
+            />
+          )}/>
+          <Route path="/recordLogs" render={props=>(
+            <RecordLogs
+              {...props}
+              loggedInStatus={this.state.loggedInStatus}
+              username={this.state.username}
+              handleSuccessfulLogout={this.handleSuccessfulLogout}
+            />
+          )}/>
+          <Route path="/researchdocs" render={props=>(
+            <ResearchDocs
+              {...props}
+              loggedInStatus={this.state.loggedInStatus}
+              username={this.state.username}
+              handleSuccessfulLogout={this.handleSuccessfulLogout}
+            />
+          )}/>
+          <Route path="/researchlogs" render={props=>(
+            <ResearchLogs
+              {...props}
+              loggedInStatus={this.state.loggedInStatus}
+              username={this.state.username}
+              handleSuccessfulLogout={this.handleSuccessfulLogout}
+            />
+          )}/>
+          <Route path="/scpclearancelevels" render={props=>(
+            <SCPClearanceLevels
+              {...props}
+              loggedInStatus={this.state.loggedInStatus}
+              username={this.state.username}
+              handleSuccessfulLogout={this.handleSuccessfulLogout}
+            />
+          )}/>
           <Route path="/RAInfo"
                 render={props => (
                 <RaInfo 
                   {...props}
                   loggedInStatus={this.state.loggedInStatus}
+                  username={this.state.username}
+                  handleSuccessfulLogout={this.handleSuccessfulLogout}
                 />
               )}/>
           <Route path="/RALogin"
@@ -74,6 +137,10 @@ export default class App extends Component {
                     handleUnsuccessfulLogin={this.handleUnsuccessfulLogin}
                   />
                 )}/>
+          {this.state.loggedInStatus === true 
+          ? this.authdAdminPages()
+          :null}
+
         </BrowserRouter>
         
       </div>

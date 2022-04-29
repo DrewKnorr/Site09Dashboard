@@ -73,9 +73,13 @@ Close(event){
   render() {
     return (
       <div className='home-wrapper'>
-          <div className='content-wrapper'>
-             <NavBar/>
-           </div>
+          <div className='nav-wrapper'style={{zIndex:1,right:0,position:'absolute'}}>
+              <NavBar
+                  loggedInStatus={this.props.loggedInStatus}
+                  username={this.props.username}
+                  handleSuccessfulLogout={this.props.handleSuccessfulLogout}
+              />
+          </div>
           <div id='research-doc-container' >
             <div className='research-doc-wrapper'>
               <div className='research-doc-label' style={{visibility:this.state.hidden}}>
