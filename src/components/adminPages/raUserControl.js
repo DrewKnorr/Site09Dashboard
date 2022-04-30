@@ -8,7 +8,7 @@ export default class UserControl extends Component {
       }
 
     componentDidMount(){
-    fetch("http://127.0.0.1:5000/get/all/users", {
+    fetch("https://site-09-api.herokuapp.com/get/all/users", {
         method: "POST",
         headers: { 'Content-Type': 'application/json'},
     }).then((response) => {

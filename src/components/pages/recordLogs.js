@@ -38,21 +38,20 @@ handleSubmit(event) {
     'log':this.state.log
   };
   console.log(JSON.stringify(data))
-  fetch('http://127.0.0.1:5000/post/log', {
+  fetch('https://site-09-api.herokuapp.com/post/log', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify({data}),
   }).then((response) => {
     response.json().then((body) => {
-        console.log(body);
-        // this.setState({
-        //   rname:'',
-        //   rrank:'',
-        //   approvedby:'',
-        //   scpsused:'',
-        //   log:'',
-        //   errorText:''
-        // })
+        this.setState({
+          rname:'',
+          rrank:'',
+          approvedby:'',
+          scpsused:'',
+          log:'',
+          errorText:''
+        })
     });
   });
 
