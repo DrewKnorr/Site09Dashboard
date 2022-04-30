@@ -1,3 +1,42 @@
-#review-log-wrapper{
+#log-content-wrapper{
     width:80vw;
+    #log-review-wrapper{
+        // border:1px solid black;
+    }
+    #table-wrapper{
+        height:50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        overflow-y: scroll;
+        .log-item{
+            display:flex;
+            flex-direction: row;
+            P{
+                text-align:center;
+                font-size:1em;
+                // width:100%;
+                border:1px solid black;
+            }
+            .id-wrapper{
+                width:2em;
+            }
+            .name-wrapper, .approved-wrapper{
+                width:10em;
+            }
+            .rank-wrapper{
+                width:11em;
+            }
+            .log-wrapper{
+                width:70em;
+            }
+            .scp-wrapper{
+                width:6em;
+            }
+            .time-wrapper{
+                width:10em;
+            }
+        }
+    }
 }
