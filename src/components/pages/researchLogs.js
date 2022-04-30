@@ -6,9 +6,44 @@ export default class RecordLogs extends Component {
   constructor(props){
     super(props)
     this.state={
-      logs:{}
+      logs:{},
+      rname:'',
+      rrank:'',
+      approvedby:'',
+      scpsused:''
     }
     this.buildLogs = this.buildLogs.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.search = this.search.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+      errorText: ""
+    });
+  
+  }
+
+  search(){
+    const data = {
+      'rname':this.state.rname,
+      'rrank': this.state.rrank,
+      'approvedby':this.state.approvedby,
+      'scpused':this.state.scpsused
+    };
+
+    fetch("http://127.0.0.1:5000/get/logs/filtered", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({data})
+    }).then((response) => {
+        response.json().then((body) => {
+            console.log(body);
+            // this.buildLogs(body);
+        });
+    })
+    console.log(this.state.rname, this.state.rrank, this.state.approvedby, this.state.scpsused)
   }
 
   buildLogs(response){
@@ -88,24 +123,37 @@ export default class RecordLogs extends Component {
           <div id='log-content-wrapper' >
             <div id='log-review-wrapper' >
                 <div id='log-contol-wrapper'>
-                  <div>
-                    <label>Researcher:</label>
-                    <input></input>
+                  <div className='log-menu-item'>
+                    <h2>Researcher:</h2>
+                    <input name='rname' value={this.state.rname} onInput={this.handleChange}/>
                   </div>
-                  <div>
-                    <label>Rank:</label>
-                    <input></input>
+                  <div className='log-menu-item'>
+                    <h2>Rank:</h2>
+                    <select name='rrank' value={this.state.rrank} onChange={this.handleChange}>
+                      <option value="">None</option>
+                      <option value="Research Apprentice">Research Apprentice</option>
+                      <option value="Junior Researcher">Junior Researcher</option>
+                      <option value="Researcher">Researcher</option>
+                      <option value="Senior Researcher">Senior Researcher</option>
+                      <option value="Research Specialist">Research Specialist</option>
+                      <option value="Field Researcher">Field Researcher</option>
+                      <option value="Research Advisor">Research Advisor</option>
+                      <option value="Research Supervisor">Research Supervisor</option>
+                      <option value="Research Overseer">Research Overseer</option>
+                      <option value="Research Coordinator">Research Coordinator</option>
+                      <option value="Director of Research">Director of Research</option>
+                    </select>
                   </div>
-                  <div>
-                    <label>Approved By:</label>
-                    <input></input>
+                  <div className='log-menu-item'>
+                    <h2>Approved By:</h2>
+                    <input name='approvedby' value={this.state.approvedby} onInput={this.handleChange}/>
                   </div>
-                  <div>
-                    <label>SCP('s) Used:</label>
-                    <input></input>
+                  <div className='log-menu-item'>
+                    <h2>SCP('s) Used:</h2>
+                    <input name='scpsused' value={this.state.scpsused} onInput={this.handleChange}/>
                   </div>
-                  <div>
-                    <button>TEST</button>
+                  <div className='log-menu-item'>
+                    <button onClick={this.search}>[ Search ]</button>
                   </div>
                 </div>
             </div>

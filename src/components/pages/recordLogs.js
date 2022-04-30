@@ -80,7 +80,7 @@ handleSubmit(event) {
                 <input name='rname' value={this.state.rname} onInput={this.handleChange}/>
                 <label>Researcher Rank:</label>
                 {/* <input name='rrank' value={this.state.rrank} onInput={this.handleChange}/> */}
-                <select value={this.state.rrank} onChange={this.handleChange}>
+                <select name='rrank' value={this.state.rrank} onChange={this.handleChange}>
                   <option value="Research Apprentice">Research Apprentice</option>
                   <option value="Junior Researcher">Junior Researcher</option>
                   <option value="Researcher">Researcher</option>
