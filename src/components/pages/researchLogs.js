@@ -30,17 +30,17 @@ export default class RecordLogs extends Component {
       'rname':this.state.rname,
       'rrank': this.state.rrank,
       'approvedby':this.state.approvedby,
-      'scpused':this.state.scpsused
+      'scpsused':this.state.scpsused
     };
 
-    fetch("http://127.0.0.1:5000/get/logs/filtered", {
+    fetch("https://site-09-api.herokuapp.com/get/logs/filtered", {
         method: "POST",
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({data})
     }).then((response) => {
         response.json().then((body) => {
             console.log(body);
-            // this.buildLogs(body);
+            this.buildLogs(body);
         });
     })
     console.log(this.state.rname, this.state.rrank, this.state.approvedby, this.state.scpsused)
@@ -48,9 +48,51 @@ export default class RecordLogs extends Component {
 
   buildLogs(response){
     let wrapper = document.getElementById("table-wrapper");
-    console.log(response.Logs);
+    wrapper.innerHTML='';
+
+    let firstTempDiv = document.createElement("div");
+    firstTempDiv.className = `log-item`
+
+    let firstTempId = document.createElement("p");
+    firstTempId.innerHTML=`ID:`
+    firstTempId.className='id-wrapper'
+
+    let firstTemprname = document.createElement("p");
+    firstTemprname.innerHTML=`Researcher Name:`
+    firstTemprname.className=`name-wrapper`
+
+    let firstTemprrank = document.createElement("p");
+    firstTemprrank.innerHTML=`Researcher Rank:`
+    firstTemprrank.className=`rank-wrapper`
+
+    let firstTempSCP = document.createElement("p");
+    firstTempSCP.innerHTML=`Approved By:`
+    firstTempSCP.className=`scp-wrapper`
+
+    let firstapprovedBy = document.createElement("p");
+    firstapprovedBy.innerHTML=`SCP's Used:`
+    firstapprovedBy.className=`approved-wrapper`
+
+    let firstlog = document.createElement("p");
+    firstlog.innerHTML=`Log:`
+    firstlog.className=`log-wrapper`
+
+    let firsttimeStamp = document.createElement("p");
+    firsttimeStamp.innerHTML=`Time:`
+    firsttimeStamp.className=`time-wrapper`
+
+    firstTempDiv.appendChild(firstTempId);
+    firstTempDiv.appendChild(firstTemprname);
+    firstTempDiv.appendChild(firstTemprrank);
+    firstTempDiv.appendChild(firstapprovedBy);
+    firstTempDiv.appendChild(firstTempSCP);
+    firstTempDiv.appendChild(firstlog);
+    firstTempDiv.appendChild(firsttimeStamp);
+
+    wrapper.appendChild(firstTempDiv)
+
     for(let i=0; i<response.Logs.length ;i++){
-      console.log(response.Logs[i])
+
       let tempDiv = document.createElement("div");
       tempDiv.className = `log-item`
 
