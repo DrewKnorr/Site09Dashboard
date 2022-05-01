@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import NavBar from '../parts/navbar';
+import Logo from '../../../static/assets/photos/logo.png';
 
 export default class RecordLogs extends Component {
   constructor(props){
@@ -164,40 +166,45 @@ export default class RecordLogs extends Component {
           </div>
           <div id='log-content-wrapper' >
             <div id='log-review-wrapper' >
+              <div id='log-review-container'>
                 <div id='log-contol-wrapper'>
-                  <div className='log-menu-item'>
-                    <h2>Researcher:</h2>
-                    <input name='rname' value={this.state.rname} onInput={this.handleChange}/>
+                    <div className='log-menu-item'>
+                      <h2>Researcher:</h2>
+                      <input name='rname' value={this.state.rname} onInput={this.handleChange}/>
+                    </div>
+                    <div className='log-menu-item'>
+                      <h2>Rank:</h2>
+                      <select name='rrank' value={this.state.rrank} onChange={this.handleChange}>
+                        <option value="">None</option>
+                        <option value="Research Apprentice">Research Apprentice</option>
+                        <option value="Junior Researcher">Junior Researcher</option>
+                        <option value="Researcher">Researcher</option>
+                        <option value="Senior Researcher">Senior Researcher</option>
+                        <option value="Research Specialist">Research Specialist</option>
+                        <option value="Field Researcher">Field Researcher</option>
+                        <option value="Research Advisor">Research Advisor</option>
+                        <option value="Research Supervisor">Research Supervisor</option>
+                        <option value="Research Overseer">Research Overseer</option>
+                        <option value="Research Coordinator">Research Coordinator</option>
+                        <option value="Director of Research">Director of Research</option>
+                      </select>
+                    </div>
+                    <div className='log-menu-item'>
+                      <h2>Approved By:</h2>
+                      <input name='approvedby' value={this.state.approvedby} onInput={this.handleChange}/>
+                    </div>
+                    <div className='log-menu-item'>
+                      <h2>SCP('s) Used:</h2>
+                      <input name='scpsused' value={this.state.scpsused} onInput={this.handleChange}/>
+                    </div>
+                    <div className='log-menu-item'>
+                      <button onClick={this.search}>[ Search ]</button>
+                    </div>
                   </div>
-                  <div className='log-menu-item'>
-                    <h2>Rank:</h2>
-                    <select name='rrank' value={this.state.rrank} onChange={this.handleChange}>
-                      <option value="">None</option>
-                      <option value="Research Apprentice">Research Apprentice</option>
-                      <option value="Junior Researcher">Junior Researcher</option>
-                      <option value="Researcher">Researcher</option>
-                      <option value="Senior Researcher">Senior Researcher</option>
-                      <option value="Research Specialist">Research Specialist</option>
-                      <option value="Field Researcher">Field Researcher</option>
-                      <option value="Research Advisor">Research Advisor</option>
-                      <option value="Research Supervisor">Research Supervisor</option>
-                      <option value="Research Overseer">Research Overseer</option>
-                      <option value="Research Coordinator">Research Coordinator</option>
-                      <option value="Director of Research">Director of Research</option>
-                    </select>
+                  <div id='log-menu-logo'>
+                    <img src={Logo}/>
                   </div>
-                  <div className='log-menu-item'>
-                    <h2>Approved By:</h2>
-                    <input name='approvedby' value={this.state.approvedby} onInput={this.handleChange}/>
-                  </div>
-                  <div className='log-menu-item'>
-                    <h2>SCP('s) Used:</h2>
-                    <input name='scpsused' value={this.state.scpsused} onInput={this.handleChange}/>
-                  </div>
-                  <div className='log-menu-item'>
-                    <button onClick={this.search}>[ Search ]</button>
-                  </div>
-                </div>
+              </div>
             </div>
             <div id='table-wrapper'>
               <div className='log-item'>

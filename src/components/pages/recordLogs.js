@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavBar from '../parts/navbar';
+import Logo from '../../../static/assets/photos/logo.png';
 
 export default class RecordLogs extends Component {
   constructor(props) {
@@ -73,7 +74,12 @@ handleSubmit(event) {
             </div>
             <form>
               <div id='logo-wrapper'>
-                <h1>SCP Record Research Logs:</h1>
+                <div id='text-wrapper'>
+                  <h1>Site-09 Research Department</h1>
+                  <h2>Record New Log:</h2>
+                </div>
+                
+                <img src={Logo} alt="TEST"/>
               </div>
               <div className='form-item'> 
                 <label>Researcher Name:</label>

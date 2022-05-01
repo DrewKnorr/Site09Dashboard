@@ -40,7 +40,7 @@ export default class Landing extends Component {
                 <h2>{`${this.state.builtWelcome}`}</h2>
                 <div id='highlight-container'>
                     <div className='highlight-item'>
-
+                        
                     </div>
                 </div>
             </div>

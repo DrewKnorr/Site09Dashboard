@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
+import Logo from '../../../static/assets/photos/logoRa.png';
 import NavBar from '../parts/navbar.js';
 
 export default class Login extends Component {
@@ -70,36 +71,44 @@ export default class Login extends Component {
                   handleSuccessfulLogout={this.props.handleSuccessfulLogout}
               />
           </div>
-          <div>
-            <h4>Research Administration: </h4>
+          <div id='ra-login-wrapper'>
+            <div>
+              <img src={Logo}/>
+            </div>
+            <div>
+              <h4>Research Administration: </h4>
 
-            <div>{this.state.errorText}</div>
+              <div>{this.state.errorText}</div>
 
-            <form onSubmit={this.handleSubmit}>
-              <label htmlFor="username">Username:</label>
-              <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
+              <form onSubmit={this.handleSubmit}>
+                <label htmlFor="username">Username:</label>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
 
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Your password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
+                <label htmlFor="password">Password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Your password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
 
-              <div>
-                <button type="submit">Login</button>
-              </div>
-            </form>
+                <div>
+                  <button type="submit">Login</button>
+                </div>
+              </form>
+            </div>
+            
           </div>
-        </div>
+        <div>
+      </div>
+    </div>
     );
   }
 }

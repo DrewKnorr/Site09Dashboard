@@ -11,6 +11,27 @@
        #logo-wrapper{
            border-bottom:1px solid black;
            padding:.5em;
+           display:flex;
+           flex-direction:row;
+           #text-wrapper{
+            h1{
+                width:18em;
+                font-weight: 100;
+                text-decoration: underline;
+                margin-bottom:10px;
+            }
+            h2{
+                width:10em;
+                font-weight: 100;
+                font: size 8em;
+            }
+           }
+
+           img{
+               width: 12vw;
+               height:4em;
+               margin:1em;
+           }
        }
        .form-item{
            display:flex;

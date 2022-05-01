@@ -1,5 +1,15 @@
 #log-content-wrapper{
     width:80vw;
+    #log-review-container{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        #log-menu-logo{
+            img{
+                width:20vw;
+            }
+        }
+    }
     #log-review-wrapper{
         // border:1px solid black;
         margin-bottom:1em;

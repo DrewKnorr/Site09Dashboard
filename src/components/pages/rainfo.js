@@ -28,13 +28,26 @@ export default class RAInfo extends Component {
                 handleSuccessfulLogout={this.props.handleSuccessfulLogout}
             />
         </div>
-        <div id='ra-wrapper' style={{width:"80vw", height:"90vh"}}>
+        <div id='ra-wrapper' >
             <div>
-                <h2>Pull Content from #management-team channel</h2>
-                
+                <div id='text-wrapper'>
+                  <h2>Research Department Administration:</h2>
+                </div>
+                <div id='ra-table'>
+                  <div className='ra-item'>
+                      <h1>
+                        Director of Research:
+                      </h1>
+                      <h2>
+                        Dr.Crawford
+                      </h2>
+                  </div>
+                </div>
             </div>
             <div>
-                <h2>Schedual</h2>
+                <div id='text-wrapper'>
+                  <h2>Current Schedule:</h2>
+                </div>
             </div>
         </div>
     </div>
