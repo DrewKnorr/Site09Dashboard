@@ -29,8 +29,20 @@ export default class Login extends Component {
   }
 
   handleSubmit(event) {
-
-      fetch("https://site-09-api.herokuapp.com/admin/login", {
+      if(this.state.username=='' | this.state.password == ''){
+        if(this.state.username==''){
+          let tempUser = document.getElementById('username')
+          tempUser.style.boxShadow = '0px 0px 2.5px 0px rgba(255,0,0,0.75) inset'
+        }
+        if(this.state.password==''){
+          let tempPw = document.getElementById('password')
+          tempPw.style.boxShadow = '0px 0px 2.5px 0px rgba(255,0,0,0.75) inset'
+        }
+        this.setState({
+          errorText:"Invalid Username/Password"
+        })
+      }else{
+        fetch("https://site-09-api.herokuapp.com/admin/login", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -56,8 +68,8 @@ export default class Login extends Component {
                   console.log(body)
               });
             })
-               
-            
+      }
+      
     event.preventDefault();
   }
       
@@ -75,16 +87,15 @@ export default class Login extends Component {
             <div>
               <img src={Logo}/>
             </div>
-            <div>
-              <h4>Research Administration: </h4>
-
-              <div>{this.state.errorText}</div>
+            <div id='login-wrapper'>
+              <h2>Research Administration: </h2>
 
               <form onSubmit={this.handleSubmit}>
                 <label htmlFor="username">Username:</label>
                 <input
                   type="text"
                   name="username"
+                  id="username"
                   placeholder="Username"
                   value={this.state.username}
                   onChange={this.handleChange}
@@ -94,15 +105,17 @@ export default class Login extends Component {
                 <input
                   type="password"
                   name="password"
-                  placeholder="Your password"
+                  id="password"
+                  placeholder="Password"
                   value={this.state.password}
                   onChange={this.handleChange}
                 />
 
-                <div>
-                  <button type="submit">Login</button>
+                <div id='login-button-wrapper'>
+                  <button type="submit">[    Login    ]</button>
                 </div>
               </form>
+              <div id='error-wrapper'><h2>{this.state.errorText}</h2></div>
             </div>
             
           </div>

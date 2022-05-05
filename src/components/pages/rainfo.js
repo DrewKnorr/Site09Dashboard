@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// const { Client, Intents } = require('discord.js');
+// const { token } = require('./config.json');
+
+// import {*}  from 'discord.js';
 
 import NavBar from '../parts/navbar';
 
@@ -7,8 +11,10 @@ export default class RAInfo extends Component {
   constructor(props) {
     super(props);
     this.state={
-      loggedIn:'visible'
+      loggedIn:'visible',
+      // client:new Client({ intents: [Intents.FLAGS.GUILDS] })
     }
+    
   }
 
   componentDidMount(){

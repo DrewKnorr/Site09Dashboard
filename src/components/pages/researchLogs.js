@@ -68,11 +68,11 @@ export default class RecordLogs extends Component {
     firstTemprrank.className=`rank-wrapper`
 
     let firstTempSCP = document.createElement("p");
-    firstTempSCP.innerHTML=`Approved By:`
+    firstTempSCP.innerHTML=`SCP's Used:`
     firstTempSCP.className=`scp-wrapper`
 
     let firstapprovedBy = document.createElement("p");
-    firstapprovedBy.innerHTML=`SCP's Used:`
+    firstapprovedBy.innerHTML=`Approved By:`
     firstapprovedBy.className=`approved-wrapper`
 
     let firstlog = document.createElement("p");

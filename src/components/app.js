@@ -10,7 +10,7 @@ import ResearchLogs from './pages/researchLogs.js';
 import SCPClearanceLevels from './pages/scpClearanceLevels.js';
 import RaInfo from './pages/rainfo.js';
 import RaLogin from './adminPages/raAdminLogin.js';
-import RaUserControl from './adminPages/raUserControl.js';
+import RaAdminWindow from './adminPages/raAdminWindow.js';
 
 import NavBar from './parts/navbar.js';
 
@@ -58,7 +58,7 @@ export default class App extends Component {
         key="usercontrol"
         path="/usercontrol"
         render={props =>(
-          <RaUserControl 
+          <RaAdminWindow 
             {...props}
             loggedInStatus={this.state.loggedInStatus}
             username={this.state.username}

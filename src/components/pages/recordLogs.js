@@ -8,11 +8,11 @@ export default class RecordLogs extends Component {
   constructor(props) {
     super(props);
     this.state={
-      rname:'Ex:Dr.Some Body',
-      rrank:'Research Advisor',
-      approvedby:'N/A',
-      scpsused:'SCP-914',
-      log:'https://docs.google.com/document/d/10iyI8RIoBeqVpFb1TxfgFgjTaKLKoY9MPR1Wy1LdMWU/edit?usp=sharing',
+      rname:'',
+      rrank:'',
+      approvedby:'',
+      scpsused:'',
+      log:'',
       errorText:''
     }
     this.handleChange=this.handleChange.bind(this);
@@ -79,13 +79,12 @@ handleSubmit(event) {
                   <h2>Record New Log:</h2>
                 </div>
                 
-                <img src={Logo} alt="TEST"/>
+                <img src={Logo} alt="SCP-Logo"/>
               </div>
               <div className='form-item'> 
                 <label>Researcher Name:</label>
-                <input name='rname' value={this.state.rname} onInput={this.handleChange}/>
+                <input name='rname' placeholder='Researcher Name' value={this.state.rname} onInput={this.handleChange}/>
                 <label>Researcher Rank:</label>
-                {/* <input name='rrank' value={this.state.rrank} onInput={this.handleChange}/> */}
                 <select name='rrank' value={this.state.rrank} onChange={this.handleChange}>
                   <option value="Research Apprentice">Research Apprentice</option>
                   <option value="Junior Researcher">Junior Researcher</option>
@@ -102,13 +101,13 @@ handleSubmit(event) {
               </div>
               <div className='form-item'>
                 <label>Approved By:</label>
-                <input name='approvedby' value={this.state.approvedby} onInput={this.handleChange}/>
+                <input name='approvedby' placeholder='Approver Name or N/a' value={this.state.approvedby} onInput={this.handleChange}/>
                 <label>SCP('s) Used:</label>
-                <input name='scpsused' value={this.state.scpsused} onInput={this.handleChange}/>
+                <input name='scpsused' placeholder='Item Number(s)' value={this.state.scpsused} onInput={this.handleChange}/>
               </div>
               <div className='form-item'>
                 <label>Log/Link to Log:</label>
-                <textarea name='log' id='log-input' rows="25" cols="50" value={this.state.log} onInput={this.handleChange}/>
+                <textarea name='log'placeholder='Log or Link to Log Document' id='log-input' rows="25" cols="50" value={this.state.log} onInput={this.handleChange}/>
               </div>
               <div className='form-item'>
                 <button type='submit' onClick={this.handleSubmit}>Submit</button>

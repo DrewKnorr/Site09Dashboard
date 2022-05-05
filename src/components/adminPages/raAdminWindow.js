@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavBar from '../parts/navbar.js';
-export default class UserControl extends Component {
+import UserControl from '../adminParts/raUserControl.js';
+
+export default class RaAdminWindows extends Component {
     constructor(props) {
         super(props);
       }
@@ -22,10 +24,18 @@ export default class UserControl extends Component {
   render() {
     return (
         <div className='home-wrapper'>
-            <div id='user-control-wrapper'>
-                <div id='user-menu'>
-                    <button>Add New Admin</button>
-                    <button>Update/Delete User</button>
+            <div id='ra-adim-wrapper'>
+                <div id='ra-admin-container'>
+                    <div className='admin-item'>
+                        <UserControl/>
+                    </div>
+                    <div className='admin-item'>
+                        <p>Research Log Stats</p>
+                    </div>
+                </div>
+                <div id='ra-admin-menu'>
+                    <button>User Control</button>
+                    <button>Research Log Stats</button>
                 </div>
             </div>
             <div className='nav-wrapper'style={{zIndex:1,right:0,position:'absolute'}}>

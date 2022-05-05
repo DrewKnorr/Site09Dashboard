@@ -5,8 +5,56 @@
     align-items: center;
     // border:1px solid black;
     div{
+        margin:.5em;
         img{
-            width:25vw;
+            width:20vw;
+            border-radius: 50%;
+            border:1em solid black;
+            padding:1em;
+        }
+    }
+
+    #login-button-wrapper{
+        margin:5px;
+        width:100%;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        button{
+            // width:100%;
+            background-color: transparent;
+            border:none;
+            padding:.25em;
+            margin:.25em;
+            &:hover{
+               
+                font-weight: 900;
+                color:red;
+                background-color:black;
+            }
+        }
+    }
+
+    #login-wrapper{
+        #error-wrapper{
+            text-align: center;
+            h2{
+                font-size:1.5em;
+            }
+        }
+        h2{
+            font-size:2em;
+        }
+        form{
+            label{
+                font-size:1.5em;
+            }
+            input{
+                border:1px solid black;
+                padding:1px;
+            }
+            display:flex;
+            flex-direction: column;
         }
     }
 }
