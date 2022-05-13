@@ -1,0 +1,26 @@
+#ra-wrapper{
+    width:80vw;
+    #text-wrapper{
+        margin-bottom:1em;
+        border-bottom:1px solid black; 
+        padding: 0.5em;
+        h1{
+            padding:0.25em;
+            background-color: black;
+            color:red;
+            width:50%;
+        }
+    }
+    #ra-table{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px; 
+        .ra-item{
+            display: flex;
+            flex-direction: column;
+            
+        }
+    }
+}

@@ -8,7 +8,10 @@ class UserControl extends Component {
         super(props);
         this.state={
             errorText:'',
-            newUser:'hidden'
+            newUser:'hidden',
+            username:'',
+            email:'',
+
         }
 
         this.buildTable = this.buildTable.bind(this);
@@ -116,12 +119,21 @@ class UserControl extends Component {
           <div id='users-table'>
 
           </div>
-          <div>
+          <div id='button-wrapper'>
             <button onClick={this.newUser}>New User</button>
           </div>
           <div id='new-user-wrapper' style={{visibility:this.state.newUser}}>
-            <p>NEW USER</p>
-            <button onClick={this.closeNewUser}>X</button>
+            <div id='new-user-container'>
+              <button onClick={this.closeNewUser}>X</button>
+              <h2>New User</h2>
+              <form>
+                <label for='username'>Username:</label>
+                <input name='usename'/>
+                <label for='email'>Email Address:</label>
+                <input name='email'/>
+                
+              </form>
+            </div>
           </div>
       </div>
     );

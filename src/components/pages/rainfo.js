@@ -37,7 +37,7 @@ export default class RAInfo extends Component {
         <div id='ra-wrapper' >
             <div>
                 <div id='text-wrapper'>
-                  <h2>Research Department Administration:</h2>
+                  <h1>Research Department Administration:</h1>
                 </div>
                 <div id='ra-table'>
                   <div className='ra-item'>
@@ -45,16 +45,63 @@ export default class RAInfo extends Component {
                         Director of Research:
                       </h1>
                       <h2>
-                        Dr.Crawford
+                        Dr.Simon Hathfield
+                      </h2>
+                  </div>
+                  <div className='ra-item'>
+                      <h1>
+                        Research Coordinator: 
+                      </h1>
+                      <h2>
+                        TBD
+                      </h2>
+                  </div>
+                  <div className='ra-item'>
+                      <h1>
+                        Research Overseers: 
+                      </h1>
+                      <h2>
+                        Dr. Everett
+                      </h2>
+                      <h2>
+                        Dr. William "Void" Schultz
+                      </h2>
+                  </div>
+                  <div className='ra-item'>
+                      <h1>
+                        Research Supervisors: 
+                      </h1>
+                      <h2>
+                        Dr. Ken Adams  <p>(General Research Lead)</p>
+                      </h2>
+                      <h2>
+                        Dr. Green  <p>(Biology Research Lead)</p>
+                      </h2>
+                      <h2>
+                        Dr. Jeff  <p>(Medical Research Lead)</p>
+                      </h2>
+                  </div>
+                  <div className='ra-item'>
+                      <h1>
+                        Research Supervisors: 
+                      </h1>
+                      <h2>
+                        Dr Burger   <p>(General Co-Lead)</p>
+                      </h2>
+                      <h2>
+                        Dr. Allbright   <p>(Biology Co-Lead)</p>
+                      </h2>
+                      <h2>
+                        TBD <p>(Medical Co-Lead)</p>
                       </h2>
                   </div>
                 </div>
             </div>
-            <div>
+            {/* <div>
                 <div id='text-wrapper'>
                   <h2>Current Schedule:</h2>
                 </div>
-            </div>
+            </div> */}
         </div>
     </div>
     );
