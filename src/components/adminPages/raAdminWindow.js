@@ -29,7 +29,6 @@ handleHide(event){
     console.log("TEST")
     if(event.target.value=='user'){
         if(this.state.usercontrol=='hidden'){
-            let userControl = document.createElement(UserControl)
             this.setState({
                 usercontrol:'visible',
                 logstats:'hidden'
