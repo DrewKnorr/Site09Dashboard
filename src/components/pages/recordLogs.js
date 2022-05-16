@@ -38,7 +38,6 @@ handleSubmit(event) {
     'scpused':this.state.scpsused,
     'log':this.state.log
   };
-  console.log(JSON.stringify(data))
   fetch('https://site-09-api.herokuapp.com/post/log', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},

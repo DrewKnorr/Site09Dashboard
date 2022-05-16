@@ -61,6 +61,7 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "md5": "^2.3.0",
+    "md5-hash": "^1.0.1",
     "node-sass": "^4.13.1",
     "postcss-loader": "^2.1.6",
     "react": "16.13.1",
