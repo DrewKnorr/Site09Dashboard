@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavBar from '../parts/navbar.js';
 import UserControl from '../adminParts/raUserControl.js';
+import RaProfile from '../adminParts/raProfile.js';
 
 export default class RaAdminWindows extends Component {
     constructor(props) {
@@ -72,7 +73,9 @@ handleHide(event){
                         <p>Research Log Stats</p>
                     </div>
                     <div className='admin-item' style={{visibility:this.state.profile}}>
-                        <p>{this.props.username}</p>
+                        <RaProfile
+                            username={this.props.username}
+                        />
                     </div>
                 </div>
                 <div id='ra-admin-menu'>

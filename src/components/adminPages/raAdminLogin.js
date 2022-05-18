@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
-import { NavLink } from "react-router-dom";
-import axios from "axios";
+import md5 from 'md5-hash'
 
 import Logo from '../../../static/assets/photos/logoRa.png';
 import NavBar from '../parts/navbar.js';
@@ -47,7 +45,7 @@ export default class Login extends Component {
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     username:this.state.username,
-                    password: this.state.password
+                    password: md5(this.state.password)
                 })
             }).then((response) => {
               response.json().then((body) => {

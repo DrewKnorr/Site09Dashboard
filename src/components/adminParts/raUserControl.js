@@ -17,7 +17,8 @@ class UserControl extends Component {
             confrimPassword:'',
             errorMessage:'',
             response:{},
-            active:{}
+            active:{},
+            delErrMsg:''
 
         }
 
@@ -28,6 +29,8 @@ class UserControl extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.editUser = this.editUser.bind(this);
         this.closeEdit = this.closeEdit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.fetchUsers = this.fetchUsers.bind(this);
       }
 
     editUser(event){
@@ -44,32 +47,44 @@ class UserControl extends Component {
       textWrapper.id='text-wrapper';
       
       let userName = document.createElement("p");
-      userName.innerHTML = this.state.response[event.target.value].username;
+      userName.innerHTML = 'Username: '+this.state.response[event.target.value].username;
 
       let email = document.createElement("p");
-      email.innerHTML = this.state.response[event.target.value].email;
+      email.innerHTML = 'Email: '+this.state.response[event.target.value].email;
+
+
+      textWrapper.appendChild(userName);
+      textWrapper.appendChild(email);
+
 
       let resetPW =  document.createElement("button");
-      resetPW.innerHTML='Reset Password '
+      resetPW.innerHTML='[   Reset Password    ]'
 
       let closeBtn = document.createElement("button");
       closeBtn.addEventListener("click",this.closeEdit);
       closeBtn.innerHTML='X'
 
+
+      let closeWrapper = document.createElement("div");
+      closeWrapper.id='close-wrapper';
+
+      closeWrapper.appendChild(closeBtn);
+
+
       let removeBtn = document.createElement("button");
       removeBtn.value=this.state.response[event.target.value].id;
-      // removeBtn.addEventListener("click",this.closeEdit);
-      removeBtn.innerHTML='Remove User';
+      removeBtn.addEventListener("click",this.handleDelete);
+      removeBtn.innerHTML='[  Remove User  ]';
       
       // let updateBtn = document.createElement("button");
       // updateBtn.value=this.state.response[event.target.value].id;
       // updateBtn.innerHTML='Update Username';
 
-      container.appendChild(closeBtn);
-      container.appendChild(userName);
-      container.appendChild(email);
+      container.appendChild(closeWrapper);
+      container.appendChild(textWrapper);
       container.appendChild(resetPW);
       container.appendChild(removeBtn);
+      
     }
 
     buildTable(users){
@@ -129,35 +144,35 @@ class UserControl extends Component {
             tempDiv.appendChild(editUser);
             table.appendChild(tempDiv);
         }
+    }
 
-        
-        console.log(users)
+    fetchUsers(){
+      fetch("https://site-09-api.herokuapp.com/get/all/users", {
+        method: "GET",
+        headers: { 'Content-Type': 'application/json'},
+      }).then((response) => {
+          response.json().then((body) => {
+              if(Object.keys(body)[0]=="errText"){
+                  this.setState({
+                    errorText:Object.values(body)
+                  })
+                }
+                else{
+                  this.buildTable(body);
+                  let response = {}
+                  for(let i=0; i<body.Users.length;i++){
+                    response[`${body.Users[i].id}`] = body.Users[i]
+                  }
+                  this.setState({
+                    response:response
+                  })
+                }
+          });
+      }) 
     }
 
     componentDidMount(){
-        console.log("test")
-    fetch("https://site-09-api.herokuapp.com/get/all/users", {
-        method: "GET",
-        headers: { 'Content-Type': 'application/json'},
-    }).then((response) => {
-        response.json().then((body) => {
-            if(Object.keys(body)[0]=="errText"){
-                this.setState({
-                  errorText:Object.values(body)
-                })
-              }
-              else{
-                this.buildTable(body);
-                let response = {}
-                for(let i=0; i<body.Users.length;i++){
-                  response[`${body.Users[i].id}`] = body.Users[i]
-                }
-                this.setState({
-                  response:response
-                })
-              }
-        });
-    }) 
+      this.fetchUsers();
     }
 
     closeEdit(event){
@@ -192,24 +207,41 @@ class UserControl extends Component {
       md5Hash.default(this.state.password)
 
       let data ={
-        "username":this.state.username,
-        "email":this.state.email,
+        "username":this.state.username.toLowerCase(),
+        "email":this.state.email.toLowerCase(),
         "password":md5(this.state.password),
         "role":this.state.role
       }
       console.log(data)
       if(this.state.email!='' & this.state.username!='' & this.state.password!='' & this.state.confrimPassword!=''){
         if(this.state.password == this.state.confrimPassword){
-          fetch('http://127.0.0.1:5000/create/admin', {
+          fetch('https://site-09-api.herokuapp.com/create/admin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({data}),
           }).then((response) => {
             response.json().then((body) => {
-                console.log(body)
+              console.log(body)
+              if(Object.keys(body)[0]=="errText"){
+                this.setState({
+                  errorText:Object.values(body)
+                })
+                this.closeNewUser();
+              }
+              else{
+                this.setState({
+                  username:'',
+                  email:'',
+                  role:'1',
+                  password:'',
+                  confrimPassword:''
+                })
+                this.fetchUsers();
+                this.closeNewUser();
+              }
             });
           });
-          this.closeNewUser();
+          
         }
         else{
           this.setState({
@@ -224,6 +256,34 @@ class UserControl extends Component {
             errorMessage:'Username/Email Required'
           })
         }
+      }
+      
+    }
+
+    handleDelete(event){
+      let contiune = confirm("Are you sure you wish to delete this user? ")
+
+      if(contiune == true){
+        fetch(`https://site-09-api.herokuapp.com/delete/admin/${event.target.value}`, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json'}
+        }).then((response) => {
+          response.json().then((body) => {
+            if(Object.keys(body)[0]=="data"){
+              this.fetchUsers();
+              this.closeEdit();
+            }else{
+              // this.setState({delErrMsg:"There was an error deleting user, please see logs"})
+              alert("There was an error deleting user, please see logs")
+              this.fetchUsers();
+              this.closeEdit();
+            }
+          });
+        });
+      }
+      else{
+        this.fetchUsers();
+        this.closeEdit();
       }
       
     }
